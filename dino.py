@@ -24,7 +24,8 @@ DINO_COL = 3
 # regardless of FPS: legs swap every 1/6s, bird wings every 1/3s.
 LEG_ANIM_HALF_PERIOD = max(1, round(FPS / 6))
 BIRD_FLAP_HALF_PERIOD = max(1, round(FPS / 3))
-HIGH_SCORE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "highscore.txt")
+# HIGHSCORE_FILE moves the saved score (the Docker image points it at a folder you can mount as a volume)
+HIGH_SCORE_FILE = os.environ.get("HIGHSCORE_FILE") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "highscore.txt")
 
 DIFFICULTIES = {
     "1": {"name": "EASY", "base_speed": 24.0, "max_speed": 60.0, "speed_ramp": 0.0075,

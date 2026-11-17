@@ -8,4 +8,8 @@ ENV TERM=xterm-256color \
 WORKDIR /app
 COPY dino.py .
 
+# Mount a volume on /data to keep your high score between runs
+RUN mkdir -p /data
+ENV HIGHSCORE_FILE=/data/highscore.txt
+
 ENTRYPOINT ["python3", "dino.py"]
